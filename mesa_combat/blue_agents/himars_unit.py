@@ -36,7 +36,7 @@ class HIMARS(mesa.Agent):
         pass
     
     def fire_mission(self):
-        prsmAgent = PRSM(unique_id=len(self.model.agents)+1, 
+        prsmAgent = PRSM(unique_id=self.model.next_id(), 
                             model=self.model,
                             start_location = self.origin,
                             target_location= (1000,1000,0),
