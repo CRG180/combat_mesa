@@ -6,6 +6,7 @@ from .red_agents.buildings import EnemyTarget
 class CombatModel(mesa.Model):
     
     def __init__(self, width = 10000, height = 10000):
+        super().__init__()
         self.schedule = mesa.time.RandomActivation(self)
         self.grid =mesa.space.ContinuousSpace(height, width, False)
         self.step_num = 1
@@ -14,11 +15,6 @@ class CombatModel(mesa.Model):
         
         # Create agents
         himarsAgent = HIMARS(unique_id=self.next_id(), model = self)
-        # prsmAgent = PRSM(unique_id=1, 
-        #                 model=self,
-        #                 start_location = (1,10,0),
-        #                 target_location= (1000,1000,0),
-        #                 speed =250)
         self.schedule.add(himarsAgent)
         self.grid.place_agent(himarsAgent,(50,50))
         
